@@ -10,7 +10,7 @@ export default class fetchCountries {
 
     return fetch(url)
       .then(response => response.json())
-      .catch(err => console.log(err));
+      .catch(err => console.log(err));      
   }
 
   get query() {

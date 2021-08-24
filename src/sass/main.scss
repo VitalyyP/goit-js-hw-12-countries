@@ -18,12 +18,14 @@ li {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 90px auto;
 }
 
 .country {
   width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .country__name {

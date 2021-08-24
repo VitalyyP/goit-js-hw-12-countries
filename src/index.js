@@ -6,7 +6,7 @@ import debounce from 'lodash.debounce';
 
 import FetchCountries from './js/fetchCountries';
 
-defaults.width = '1000px';
+defaults.width = '800px';
 defaults.delay = '2000';
 
 const refSearch = document.querySelector('#search');
@@ -23,6 +23,7 @@ function getCountry(e) {
    
     if (data.length > 10) {
       alert('Too many matches found. Please enter a more specific query!');
+      refRoot.innerHTML = '';
       return;
     }
 
