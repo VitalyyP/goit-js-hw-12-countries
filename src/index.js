@@ -1,9 +1,13 @@
 import './sass/main.scss';
-import { alert, defaultModules } from '../node_modules/@pnotify/core/dist/PNotify.js';
-import * as PNotifyMobile from '../node_modules/@pnotify/mobile/dist/PNotifyMobile.js';
+import countryTpl from '../templates/country.hbs';
+import { alert, defaults } from '../node_modules/@pnotify/core/dist/PNotify.js';
+import '@pnotify/core/dist/BrightTheme.css';
 import debounce from 'lodash.debounce';
 
 import FetchCountries from './js/fetchCountries';
+
+defaults.width = '1000px';
+defaults.delay = '2000';
 
 const refSearch = document.querySelector('#search');
 const refRoot = document.querySelector('.root');
@@ -15,15 +19,28 @@ refSearch.addEventListener('input', debounce(getCountry, 500));
 
 function getCountry(e) {
   getInput(e);
-  // console.log(newCoutries.length);
-  return newCoutries.fetchCountry();
+  newCoutries.fetchCountry().then(data => {
+   
+    if (data.length > 10) {
+      alert('Too many matches found. Please enter a more specific query!');
+      return;
+    }
+
+    if (data.length > 1) {
+      makeupList(data);
+      return;
+    }
+
+    refRoot.innerHTML = countryTpl(data[0]);
+  });
+}
+
+function makeupList(data) {
+   refRoot.innerHTML = data.reduce((acc, el) => acc + `<li>${el.name}</li>`, '');
 }
 
 function getInput(e) {
   newCoutries.query = e.target.value;
-  // console.log(searchQuery);
 }
-
-
 
 

@@ -1,7 +1,53 @@
-/*
- * Главный файл стилей.
- * Все паршалы подключаются сюда.
- */
+body {
+  background-color: lightgray;
+  line-height: 1.6em;
+}
 
-// Стили для файла с примером HTML-фрагмента
-@import './example';
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 90px auto;
+}
+
+.country {
+  width: 700px;
+}
+
+.country__name {
+  font-size: 32px;
+  text-align: center;
+}
+
+.country__description {
+  display: flex;
+}
+
+.country__text{
+  width: 350px;
+  // padding-left: 50px;  
+}
+
+.country__flag {
+  width: 350px;
+}
+
+.country__languages {
+  
+}
+
+.bold {
+  font-weight: 700;
+}

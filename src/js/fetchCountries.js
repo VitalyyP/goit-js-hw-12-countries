@@ -3,7 +3,6 @@ const BASE_URL = 'https://restcountries.eu/rest/v2/name/';
 export default class fetchCountries {
   constructor() {
     this.searchQuery = '';
-    // this.length = '';
   }
 
   fetchCountry(searchQuery) {
@@ -11,10 +10,6 @@ export default class fetchCountries {
 
     return fetch(url)
       .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        // length(data);
-      })
       .catch(err => console.log(err));
   }
 
@@ -26,11 +21,3 @@ export default class fetchCountries {
     this.searchQuery = newQuery;
   }
 }
-//   get length() {
-//     return this.length;
-//   }
-
-//   set length(data) {
-//     this.length = data.length;
-//   }
-// }
