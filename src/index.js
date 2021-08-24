@@ -3,13 +3,27 @@ import { alert, defaultModules } from '../node_modules/@pnotify/core/dist/PNotif
 import * as PNotifyMobile from '../node_modules/@pnotify/mobile/dist/PNotifyMobile.js';
 import debounce from 'lodash.debounce';
 
-export default class newFoundedCoutry {
-  constructor() {}
+import FetchCountries from './js/fetchCountries';
 
-  fetchCountry() {
-    const url = 'https://restcountries.eu/rest/v2/name/{name}';
-    return fetch(url)
-      .then(response => response.json())
-      .then();
-  }
+const refSearch = document.querySelector('#search');
+const refRoot = document.querySelector('.root');
+
+const newCoutries = new FetchCountries();
+
+refSearch.addEventListener('input', debounce(getCountry, 500));
+
+
+function getCountry(e) {
+  getInput(e);
+  // console.log(newCoutries.length);
+  return newCoutries.fetchCountry();
 }
+
+function getInput(e) {
+  newCoutries.query = e.target.value;
+  // console.log(searchQuery);
+}
+
+
+
+
