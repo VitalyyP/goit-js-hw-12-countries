@@ -32,6 +32,10 @@ function getCountry(e) {
     }
 
     refRoot.innerHTML = countryTpl(data[0]);
+    const refCountryPopulation = document.querySelector('.country__population');
+
+    const commanPopulation = data[0].population.toLocaleString('ru');
+    refCountryPopulation.innerHTML = `<span class='bold'>Population: </span>${commanPopulation}`;
   });
 }
 
@@ -42,5 +46,4 @@ function makeupList(data) {
 function getInput(e) {
   newCoutries.query = e.target.value;
 }
-
 
